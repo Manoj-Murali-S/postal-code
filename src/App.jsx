@@ -1,11 +1,16 @@
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Dashboard from "./Pages/Dashboard"; // Assuming PascalCase for components
+import Login from "./Pages/Login";
 
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <BrowserRouter>
+        <Routes>  
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/" element={<Dashboard />} /> 
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
