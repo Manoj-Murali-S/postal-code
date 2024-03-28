@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Dashboard from "./Pages/Dashboard"; // Assuming PascalCase for components
+import Dashboard from "./Pages/Dashboard";
 import Login from "./Pages/Login";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Routes>  
+        <Routes>
           <Route exact path="/login" element={<Login />} />
-          <Route exact path="/" element={<Dashboard />} /> 
+          <Route exact path="/" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>

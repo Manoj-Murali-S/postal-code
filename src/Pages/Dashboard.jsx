@@ -1,10 +1,10 @@
-import React , {useEffect , useState} from "react"
-import { useNavigate  } from "react-router-dom";
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import NavBar from "../Components/Navbar"
 
 const Dashboard = () => {
-  const navigate = useNavigate ();
-  const [logout, setLogout] = React.useState(false);
+  const navigate = useNavigate();
+  const [logout, setLogout] = useState(false);
 
   useEffect(() => {
     if (!localStorage.getItem("auth")) navigate("/login");
@@ -16,13 +16,14 @@ const Dashboard = () => {
     setLogout(true);
   };
   return (
-    <>
-      <NavBar />
-      <h1>Hello world!</h1>
-
-      <button onClick={logoutHandle} className="bg-orange-500 px-2 py-3">
-        Logout
-      </button>
+    <><NavBar />
+      <div className="container mx-auto">
+        
+        <h1>Hello world!</h1>
+        <button onClick={logoutHandle} className="bg-orange-500 px-2 py-3">
+          Logout
+        </button>
+      </div>
     </>
   )
 }
