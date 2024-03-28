@@ -35,7 +35,7 @@ const Login = () => {
 
                     <div className="mt-10 sm:mx-auto w-full  ">
                         <form className="space-y-6" onSubmit={submitHandler}>
-                            
+
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                     Email address
