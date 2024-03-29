@@ -34,8 +34,10 @@ const Navbar = () => {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
-                <div className="flex-shrink-0">
+                <div className="flex gap-2 items-center">
                   <FaSignsPost className="h-6 w-6 text-slate-200" aria-hidden="true" />
+                  <p className="text-sm font-semibold block md:hidden text-slate-200">Postal Pin Code</p>
+                </div>
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4 items-center">
@@ -69,7 +71,7 @@ const Navbar = () => {
                     </a>
                   </div>
                 </div>
-              </div>
+              
               <div className="hidden sm:ml-6 sm:block">
                 <div className="flex items-center">
 
