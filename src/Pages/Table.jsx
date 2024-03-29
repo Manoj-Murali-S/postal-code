@@ -11,36 +11,9 @@ const Table = (props) => {
                 <div className="mt-4 flow-root">
                     <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 p-3">
                         <div className="inline-block min-w-full py-2 align-middle p-4 border border-gray-200 rounded-md shadow-lg">
-                            {/* <table className="min-w-full divide-y divide-gray-300">
-
-                         {pincodeData ? (     
-                               <tbody className="divide-y divide-gray-200">
-                                    <tr>
-                                        <th scope="col" className={thClass}>Name</th>
-                                        <td className={tdClass}>{pincodeData.PostOffice[0].Name}</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="col" className={thClass}>District</th>
-                                        <td className={tdClass}>{pincodeData.PostOffice[0].District}</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="col" className={thClass}>Name</th>
-                                        <td className={tdClass}>Lindsay Walton</td>
-
-                                    </tr>
-                                    <tr>
-                                        <th scope="col" className={thClass}>Name</th>
-                                        <td className={tdClass}>Lindsay Walton</td>
-
-                                    </tr>
-
-                                </tbody>
-                                 ) : (
-                                    <p>Loading pincode details...</p>
-                                 )}
-                            </table> */}
+                          
+                             
+                              
                              {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -50,8 +23,8 @@ const Table = (props) => {
           {data.map((item, index) => (
             <div key={index}>
               <h2>{item.Message}</h2>
-              <table>
-                <tbody>
+              <table  className="min-w-full divide-y divide-gray-300">
+                <tbody  className="divide-y divide-gray-200">
                   {item.PostOffice.map((office, index) => (
                     <tr key={index}>
                       <td>{office.Name}</td>
