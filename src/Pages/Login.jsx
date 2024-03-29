@@ -16,7 +16,7 @@ const Login = () => {
     const submitHandler = e => {
         e.preventDefault();
 
-        if (input.email !== 'a@a.com' || input.password !== 'password') return seterrorMessage('Invalid email or password');
+        if (input.email !== 'test@example.com' || input.password !== 'password') return seterrorMessage('Invalid email or password');
 
         navigate('/')
         localStorage.setItem('auth', true)
