@@ -6,7 +6,46 @@ import Table from "./Table"
 
 const Dashboard = () => {
   const inputClass = " block w-full rounded-none rounded-l-md border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-inset focus:ring-gray-400 focus:ring-1 sm:text-sm sm:leading-6 focus:outline-none"
- 
+  const [count, setCount] = useState('');
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [inputError, setInputError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(
+          `https://api.postalpincode.in/pincode/${count}`
+        );
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.statusText}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (count.length === 6) {
+      fetchData();
+    }
+  }, [count]);
+
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    setCount(inputValue);
+    if (inputValue.length !== 6) {
+      setInputError('PIN code must be 6 digits');
+    } else {
+      setInputError(null);
+    }
+  };
   return (
     <>
       <NavBar />
@@ -21,11 +60,10 @@ const Dashboard = () => {
                 <FaSignsPost className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </div>
               <input
-                type="email"
-                name="email"
-                id="email"
+                value={count}
+                onChange={handleInputChange}
+                placeholder="Enter PIN code"
                 className={inputClass}
-                placeholder="postal code"
               />
             </div>
             <button
@@ -36,8 +74,14 @@ const Dashboard = () => {
               Search
             </button>
           </div>
+          
+      {inputError && <p style={{ color: 'red' }}>{inputError}</p>}
         </div>
-<Table />
+<Table 
+isLoading={isLoading}
+error={error}
+data={data}
+/>
       </div>
     </>
   )
